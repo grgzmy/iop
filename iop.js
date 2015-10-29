@@ -1,22 +1,21 @@
 var Twitter = require('twitter');
-var audio = require('play-sound')(opts = {});
+//var audio = require('play-sound')(opts = {});
+var audio = require('omxcontrol');
 var gpio = require('rpi-gpio');
+var gpio_number = 7;
 
-gpio.setup(7, gpio.DIR_OUT, on);
+gpio.setup(gpio_number, gpio.DIR_OUT, off);
 
 function on(){
-	gpio.write(7, true, function(err){
+	gpio.write(gpio_number, true, turnOff);
+}
 
-	});
-	off();
+function turnOff(){
+	setTimeout(off, 300);
 }
 
 function off(){
-	setTimeout(function(){
-		gpio.write(7, false, function(e){
-
-		});
-	}, 300);
+	gpio.write(gpio_number, false);
 }
 
 var client = new Twitter({
@@ -47,9 +46,7 @@ function ohShit(err){
 
 function scream(){
 	var mp3 = Math.floor((Math.random()*4)+1).toString() + '.mp3';
-	audio.play(mp3, function(err){
-		//console.error("play threw");
-	});
+	audio.start(mp3);
 }
 
-client.stream('/statuses/filter/', {track: 'sanders'}, react);
+client.stream('/statuses/filter/', {track: 'javascript'}, react);
