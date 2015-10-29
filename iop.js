@@ -15,7 +15,7 @@ function off(){
 	setTimeout(function(){
 		gpio.write(7, false, function(e){
 
-		})l
+		});
 	}, 300);
 }
 
