@@ -2,7 +2,7 @@ var Twitter = require('twitter');
 var audio = require('play-sound')(opts = {});
 var gpio = require('rpi-gpio');
 
-gpio.setup(7, gpui.DIR_OUT, on);
+gpio.setup(7, gpio.DIR_OUT, on);
 
 function on(){
 	gpio.write(7, true, function(err){
